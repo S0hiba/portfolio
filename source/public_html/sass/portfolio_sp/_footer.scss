@@ -1,0 +1,34 @@
+.footer-PageUpLinkArea {
+    margin: 0 10px;
+    padding-bottom: 5px;
+    border-bottom: none;
+    text-align: right;
+}
+
+.footer-PageUpLinkArea a {
+    color: #000000;
+}
+
+.footer-PageUpLinkArea a:hover {
+    color: $themeColor;
+}
+
+.footer-ContentsLinkArea {
+    display: none;
+}
+
+.footer-NavArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px;
+    background-color: $themeColor;
+}
+
+.footer-NavArea_Nav ul {
+    display: none;
+}
+
+.footer-NavArea p {
+    margin: 0;
+}

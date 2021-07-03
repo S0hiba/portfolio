@@ -1,0 +1,61 @@
+.profile {
+    margin: 0;
+    padding: 10px;
+}
+
+.profile-SelfIntroduction h2 {
+    margin: 0;
+}
+
+.profile-SelfIntroduction div {
+    display: block;
+}
+
+.profile-SelfIntroduction img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 5px auto;
+    border: 3px solid $themeColor;
+}
+
+.profile-SkillSet {
+    margin-top: 30px;
+}
+
+.profile-SkillSet h2 {
+    margin: 0;
+}
+
+.profile-SkillSetTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profile-SkillSetTable th,
+.profile-SkillSetTable td {
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+.profile-SkillSetTable_EvaluationColumn {
+    width: 50%;
+}
+
+.profile-SkillSetTable_ExperienceColumn {
+    width: 10%;
+}
+
+.profile-SkillSetTable img {
+    max-width: 90%;
+    max-height: 100px;
+}
+
+.profile-Hobby {
+    margin-top: 30px;
+}
+
+.profile-Hobby h2 {
+    margin: 0;
+}

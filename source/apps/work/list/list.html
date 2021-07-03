@@ -1,0 +1,43 @@
+{strip}
+<!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta charset="UTF-8">
+        <title>S_hiba's Portfolio Website</title>
+        <meta name="description" content="S_hibaのポートフォリオサイトです。">
+        <meta name="keywords" content="S_hiba,ポートフォリオ,エンジニア,WEB">
+        <meta name="viewport" content="width=device-width">
+        <meta property="og:url" content="https://www.s0hiba.site/work/list/">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="S_hiba's Portfolio Website">
+        <meta property="og:description" content="S_hibaのポートフォリオサイトです。">
+        <meta property="og:site_name" content="S_hiba's Portfolio Website">
+        <meta property="og:image" content="https://cdn.s0hiba.site/img/logo.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" sizes="256x256" href="https://cdn.s0hiba.site/img/logo.ico">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio_sp.min.css" media="(max-width: 500px)">
+    </head>
+    <body>
+        {$headerHtml}
+        <main>
+            <ol class="breadcrumb">
+                <li><a href="/top/">ホーム</a></li>
+                <li>作品</li>
+            </ol>
+            <ul class="workList">
+                {foreach from=$workList item=workRow}
+                    <li>
+                        <a href="/work/overview/{$workRow.work_id}/">
+                            <img src="https://cdn.s0hiba.site/img/{$workRow.work_code}.png" alt="{$workRow.work_name} サムネイル">
+                            <h2>{$workRow.work_name}</h2>
+                        </a>
+                    </li>
+                {/foreach}
+            </ul>
+        </main>
+        {$footerHtml}
+        <img class="counter" src="/counter/work/list/" alt="">
+    </body>
+</html>
+{/strip}

@@ -1,0 +1,108 @@
+.blogArticle {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.blogArticle a {
+    color: #000000;
+}
+
+.blogArticle a:hover {
+    color: $themeColor;
+}
+
+.blogArticle-NavArea {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.blogArticle-NavArea nav {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #E8E8E8;
+}
+
+.blogArticle-NavArea h1 {
+    margin: 5px 0;
+}
+
+.blogArticle-NavArea h2 {
+    margin: 10px 0;
+    margin-left: 15px;
+}
+
+.blogArticle-NavArea ul {
+    margin: 0;
+}
+
+.blogArticle-ArticleArea {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.blogArticle-Article_Header {
+    border-bottom: 3px solid $themeColor;
+}
+
+.blogArticle-Article_Header h1 {
+    margin: 0;
+}
+
+.blogArticle-Article_Header p {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.blogArticle-Article_Text {
+    word-break: break-all;
+}
+
+.blogArticle-CommentArea_Header {
+    border-bottom: 3px solid $themeColor;
+}
+
+.blogArticle-CommentArea_CommentHeader h1 {
+    margin: 0;
+}
+
+.blogArticle-CommentArea_CommentHeader p {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.blogArticle-CommentForm h1 {
+    border-bottom: 3px solid $themeColor;
+}
+
+.blogArticle-CommentForm label {
+    width: 70px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.blogArticle-CommentForm input {
+    width: 95%;
+    padding: 5px;
+}
+
+.blogArticle-CommentForm textarea {
+    width: 95%;
+    height: 168px;
+    padding: 5px;
+}
+
+.blogArticle-CommentForm button {
+    width: 99%;
+    padding: 5px;
+    background-color: $themeColor;
+    cursor: pointer;
+}
+
+.blogArticle-CommentForm button:hover {
+    background-color: $themeColorDark;
+}

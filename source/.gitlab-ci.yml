@@ -1,0 +1,15 @@
+Deploy:
+    script:
+        - \cp -rf ./ /mnt/homepage/${CI_PROJECT_PATH}/
+    tags:
+        - local_shared
+    only:
+        - master
+
+StagingDeploy:
+    script:
+        - \cp -rf ./ /mnt/homepage/(stagingPath)/
+    tags:
+        - local_shared
+    only:
+        - staging

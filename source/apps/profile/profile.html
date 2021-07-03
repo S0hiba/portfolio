@@ -1,0 +1,87 @@
+{strip}
+<!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta charset="UTF-8">
+        <title>S_hiba's Portfolio Website</title>
+        <meta name="description" content="S_hibaのポートフォリオサイトです。">
+        <meta name="keywords" content="S_hiba,ポートフォリオ,エンジニア,WEB">
+        <meta name="viewport" content="width=device-width">
+        <meta property="og:url" content="https://www.s0hiba.site/profile/">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="S_hiba's Portfolio Website">
+        <meta property="og:description" content="S_hibaのポートフォリオサイトです。">
+        <meta property="og:site_name" content="S_hiba's Portfolio Website">
+        <meta property="og:image" content="https://cdn.s0hiba.site/img/logo.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" sizes="256x256" href="https://cdn.s0hiba.site/img/logo.ico">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio_sp.min.css" media="(max-width: 500px)">
+    </head>
+    <body>
+        {$headerHtml}
+        <main>
+            <ol class="breadcrumb">
+                <li><a href="/top/">ホーム</a></li>
+                <li>自己紹介</li>
+            </ol>
+            <article class="profile">
+                <section class="profile-SelfIntroduction">
+                    <h2><i class="fas fa-user"></i>自己紹介</h2>
+                    <div>
+                        <img src="https://cdn.s0hiba.site/img/logo.png" alt="ロゴ">
+                        <p>
+                            はじめまして、S_hibaです。{$age}歳の静岡県在住Webエンジニアです。<br>
+                            業務では、2018年4月～2019年10月はバックエンド開発を担当、以降はインフラ担当をしています。<br>
+                            さらに、フロントエンド開発にも興味があり、プライベート開発を通して勉強中です。<br>
+                            Web開発の全体を俯瞰したうえで最適な開発が出来る、そんなエンジニアを目指しています。<br>
+                        </p>
+                    </div>
+                </section>
+                <section class="profile-SkillSet">
+                    <h2><i class="far fa-file-code"></i>スキルセット</h2>
+                    {foreach from=$skillList item=skillListTechnologyTag key=technologyTagId}
+                        <section>
+                            <h3>{$tagList[$technologyTagId]['technology_tag_name']}</h3>
+                            <table class="profile-SkillSetTable">
+                                <thead>
+                                    <tr>
+                                        <th class="profile-SkillSetTable_SkillColumn">スキル</th>
+                                        <th class="profile-SkillSetTable_EvaluationColumn">自己評価</th>
+                                        <th class="profile-SkillSetTable_ExperienceColumn">経験年数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {foreach from=$skillListTechnologyTag item=skillRow}
+                                        <tr>
+                                            <td class="profile-SkillSetTable_SkillColumn">
+                                                <img src="{$skillRow.technology_image}" alt="{$skillRow.technology_name} ロゴ"><br>
+                                                {$skillRow.technology_name}
+                                            </td>
+                                            <td class="profile-SkillSetTable_EvaluationColumn">
+                                                {section name=skill start=1 loop=$skillRow.skill_evaluation+1 step=1}
+                                                    <i class="fas fa-star"></i>
+                                                {/section}
+                                                {section name=skillSpace start=1 loop=6-$skillRow.skill_evaluation step=1}
+                                                    <i class="far fa-star"></i>
+                                                {/section}
+                                            </td>
+                                            <td class="profile-SkillSetTable_ExperienceColumn">{$skillRow.skill_experience}年</td>
+                                        </tr>
+                                    {/foreach}
+                                </tbody>
+                            </table>
+                        </section>
+                    {/foreach}
+                </section>
+                <section class="profile-Hobby">
+                    <h2><i class="fas fa-baseball-ball"></i>趣味</h2>
+                    <p>野球観戦、旅行、写真撮影</p>
+                </section>
+            </section>
+        </main>
+        {$footerHtml}
+        <img class="counter" src="/counter/profile/" alt="">
+    </body>
+</html>
+{/strip}

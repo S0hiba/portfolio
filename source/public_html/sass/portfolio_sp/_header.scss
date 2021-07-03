@@ -1,0 +1,49 @@
+.header {
+    background-color: $themeColor;
+}
+
+.header-TitleArea {
+    padding: 10px;
+}
+
+.header-TitleArea h1 {
+    display: inline-block;
+    margin: 0;
+    font-size: 24px;
+}
+
+.header-TitleArea p {
+    display: inline-block;
+    margin: 0;
+    font-size: 12px;
+}
+
+.header-KeyVisual {
+    vertical-align: bottom;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.header-Nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+}
+
+.header-Nav li {
+    width: 22%;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.header-Nav a {
+    color: #000000;
+}
+
+.header-Nav a:hover {
+    color: #FFFFFF;
+}

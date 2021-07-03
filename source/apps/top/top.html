@@ -1,0 +1,51 @@
+{strip}
+<!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/websaite#">
+        <meta charset="UTF-8">
+        <title>S_hiba's Portfolio Website</title>
+        <meta name="description" content="S_hibaのポートフォリオサイトです。">
+        <meta name="keywords" content="S_hiba,ポートフォリオ,エンジニア,WEB">
+        <meta name="viewport" content="width=device-width">
+        <meta property="og:url" content="https://www.s0hiba.site/">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="S_hiba's Portfolio Website">
+        <meta property="og:description" content="S_hibaのポートフォリオサイトです。">
+        <meta property="og:site_name" content="S_hiba's Portfolio Website">
+        <meta property="og:image" content="https://cdn.s0hiba.site/img/logo.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" sizes="256x256" href="https://cdn.s0hiba.site/img/logo.ico">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio_sp.min.css" media="(max-width: 500px)">
+    </head>
+    <body>
+        {$headerHtml}
+        <main>
+            <section class="top-NewsArea">
+                <h1><i class="fas fa-bullhorn"></i>更新情報</h1>
+                <ul>
+                    {foreach from=$logList item=logRow}
+                        <li>
+                            <span class="top-NewsArea_NewsInfo">
+                                <time datetime="{$logRow.log_date}">{$logRow.log_date}</time> :
+                                <span class="top-NewsArea_NewsTag">
+                                    <i class="fas fa-{$logRow.log_tag_icon}"></i>{$logRow.log_tag_name}
+                                </span>
+                            </span>
+                            <span class="top-NewsArea_NewsText">
+                                {if $logRow.log_tag_id == 1}
+                                    {$logRow.log_text}
+                                {else}
+                                    <a href="/{$logRow.log_link}">{$logRow.log_text}</a>
+                                {/if}
+                            </span>
+                        </li>
+                    {/foreach}
+                </ul>
+            </section>
+        </main>
+        {$footerHtml}
+        <img class="counter" src="/counter/top/" alt="">
+    </body>
+</html>
+{/strip}

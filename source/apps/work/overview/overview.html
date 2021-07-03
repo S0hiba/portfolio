@@ -1,0 +1,81 @@
+{strip}
+<!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta charset="UTF-8">
+        <title>S_hiba's Portfolio Website</title>
+        <meta name="description" content="S_hibaのポートフォリオサイトです。">
+        <meta name="keywords" content="S_hiba,ポートフォリオ,エンジニア,WEB">
+        <meta name="viewport" content="width=device-width">
+        <meta property="og:url" content="https://www.s0hiba.site/work/{if $work}overview/{$work.work_id}/{/if}">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="S_hiba's Portfolio Website">
+        <meta property="og:description" content="S_hibaのポートフォリオサイトです。">
+        <meta property="og:site_name" content="S_hiba's Portfolio Website">
+        <meta property="og:image" content="https://cdn.s0hiba.site/img/logo.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" sizes="256x256" href="https://cdn.s0hiba.site/img/logo.ico">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio_sp.min.css" media="(max-width: 500px)">
+    </head>
+    <body>
+        {$headerHtml}
+        <main>
+            <ol class="breadcrumb">
+                <li><a href="/top/">ホーム</a></li>
+                <li><a href="/work/list/">作品</a></li>
+                <li>{$work.work_name}</li>
+            </ol>
+            {if $work}
+                <article class="workOverview">
+                    <div class="workOverview-ItemCard">
+                        <a href="{$work.work_url}" target="_blank">
+                            <img src="https://cdn.s0hiba.site/img/{$work.work_code}.png" alt="{$work.work_name} サムネイル">
+                            <h2>{$work.work_name}</h2>
+                        </a>
+                    </div>
+                    <table class="workOverview-Table">
+                        <tbody>
+                            <tr>
+                                <th>URL</th>
+                                <td>
+                                    <a href="{$work.work_url}" target="_blank">
+                                        {$work.work_url}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="workOverview-Table_SourceCodeRow">
+                                <th>
+                                    ソースコード<br>
+                                    (zip形式ダウンロード)
+                                </th>
+                                <td>
+                                    <a href="/source/{$work.work_code}.zip" download="{$work.work_code}.zip">
+                                        https://www.s0hiba.site/source/{$work.work_code}.zip
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>説明</th>
+                                <td>
+                                    {$work.work_text|nl2br}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>使用した技術など</th>
+                                <td>
+                                    {foreach from=$technologyList item=technologyRow}
+                                        <img src="{$technologyRow.technology_image}" alt="{$technologyRow.technology_name} ロゴ">
+                                    {/foreach}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            {/if}
+        </main>
+        {$footerHtml}
+        <img class="counter" src="/counter/work/overview/{$work.work_id}/" alt="">
+    </body>
+</html>
+{/strip}

@@ -1,0 +1,95 @@
+{strip}
+<!DOCTYPE html>
+<html lang="ja">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta charset="UTF-8">
+        <title>S_hiba's Portfolio Website</title>
+        <meta name="description" content="S_hibaのポートフォリオサイトです。">
+        <meta name="keywords" content="S_hiba,ポートフォリオ,エンジニア,WEB">
+        <meta name="viewport" content="width=device-width">
+        <meta property="og:url" content="https://www.s0hiba.site/blog/list/">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="S_hiba's Portfolio Website">
+        <meta property="og:description" content="S_hibaのポートフォリオサイトです。">
+        <meta property="og:site_name" content="S_hiba's Portfolio Website">
+        <meta property="og:image" content="https://cdn.s0hiba.site/img/logo.png">
+        <link rel="icon" type="image/vnd.microsoft.icon" sizes="256x256" href="https://cdn.s0hiba.site/img/logo.ico">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/portfolio_sp.min.css" media="(max-width: 500px)">
+    </head>
+    <body>
+        {$headerHtml}
+        <main>
+            <ol class="breadcrumb">
+                <li><a href="/top/">ホーム</a></li>
+                <li>
+                    {if $breadcrumb !== ''}<a href="/blog/list/">{/if}ブログ{if $breadcrumb !== ''}</a>{/if}
+                </li>
+                {if $breadcrumb !== ''}
+                    <li>{$breadcrumb}</li>
+                {/if}
+            </ol>
+            <div class="blogList">
+                {$blogNavigationHtml}
+                <div class="blogList-ArticleArea">
+                    {foreach from=$articleList item=articleRow}
+                        <article class="blogList-Article">
+                            <header class="blogList-Article_Header">
+                                <h1>
+                                    <a href="/blog/article/{$articleRow.article_id}/">
+                                        {$articleRow.article_title}
+                                    </a>
+                                </h1>
+                                <p><i class="far fa-calendar-alt"></i><time datetime="{$articleRow.article_stamp}">{$articleRow.article_stamp}</time></p>
+                                <p>
+                                    <a href="/blog/list/tag/{$articleRow.article_tag_id}/">
+                                        <i class="fas fa-tags"></i>{$articleRow.article_tag_name}
+                                    </a>
+                                </p>
+                            </header>
+                            <p class="blogList-Article_Text">
+                                {$articleRow.article_text|truncate:315:'...'|nl2br}
+                            </p>
+                            <div class="blogList-Article_ReadLinkArea">
+                                <a href="/blog/article/{$articleRow.article_id}/">
+                                    <i class="fas fa-chevron-circle-right"></i>続きを読む
+                                </a>
+                            </div>
+                        </article>
+                    {/foreach}
+                    <div class="blogList-Pager">
+                        {if $page > 1}
+                            <div class="blogList-Pager_Link-prev">
+                                <a href="/blog/list/{$optionPath}{$page-1}/">
+                                    <i class="fas fa-arrow-circle-left"></i>前
+                                </a>
+                            </div>
+                        {/if}
+                        <ol class="blogList-Pager_LinkNumberList">
+                            {section name=pager start=1 loop=$pageAll+1 step=1}
+                                <li>
+                                    <div class="blogList-Pager_Link-number{if $smarty.section.pager.index == $page} blogList-Pager_Link-current{/if}">
+                                        <a href="/blog/list/{$optionPath}{$smarty.section.pager.index}/">
+                                            {$smarty.section.pager.index}
+                                        </a>
+                                    </div>
+                                </li>
+                            {/section}
+                        </ol>
+                        {if $page < $pageAll}
+                            <div class="blogList-Pager_Link-next">
+                                <a href="/blog/list/{$optionPath}{$page+1}/">
+                                    次<i class="fas fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </main>
+        {$footerHtml}
+        <img class="counter" src="/counter/blog/list/{$optionPath}" alt="">
+    </body>
+</html>
+{/strip}

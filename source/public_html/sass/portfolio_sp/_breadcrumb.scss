@@ -1,0 +1,29 @@
+.breadcrumb {
+    margin: 0;
+    padding: 10px;
+}
+
+.breadcrumb li {
+    display: inline-block;
+}
+
+.breadcrumb li:first-child::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f015';
+}
+
+.breadcrumb li::before {
+    margin: 0 3px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f105';
+}
+
+.breadcrumb a {
+    color: #000000;
+}
+
+.breadcrumb a:hover {
+    color: $themeColor;
+}

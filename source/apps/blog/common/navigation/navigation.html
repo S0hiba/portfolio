@@ -1,0 +1,31 @@
+{strip}
+<div class="blogArticle-NavArea">
+    <nav>
+        <h1><i class="fas fa-bullhorn"></i>新着記事</h1>
+        <ul>
+            {foreach from=$articleListNew item=articleRowNew}
+                <li><a href="/blog/article/{$articleRowNew.article_id}/">{$articleRowNew.article_title}</a></li>
+            {/foreach}
+        </ul>
+    </nav>
+    <nav>
+        <h1><i class="fas fa-tags"></i>ジャンル別</h1>
+        <ul>
+            {foreach from=$tagList item=tagRow}
+                <li><a href="/blog/list/tag/{$tagRow.article_tag_id}/">{$tagRow.article_tag_name}</a></li>
+            {/foreach}
+        </ul>
+    </nav>
+    <nav>
+        <h1><i class="far fa-calendar-alt"></i>バックナンバー</h1>
+        {foreach from=$monthList item=monthListYear key=year}
+            <h2><time datetime="{$year}">{$year}年</time></h2>
+            <ul>
+                {foreach from=$monthListYear item=month}
+                    <li><a href="/blog/list/backnumber/{$year}/{$month}/"><time datetime="{$year}-{$month}">{$month}月</time></a></li>
+                {/foreach}
+            </ul>
+        {/foreach}
+    </nav>
+</div>
+{/strip}

@@ -1,0 +1,56 @@
+.workOverview {
+    padding: 10px;
+    padding-top: 0;
+}
+
+.workOverview-ItemCard {
+    width: 440px;
+    margin: 0 auto;
+    border: 1px solid $themeColor;
+    background-color: $themeColorLight;
+}
+
+.workOverview-ItemCard:hover {
+    background-color: $themeColor;
+}
+
+.workOverview-ItemCard a {
+    color: #000000;
+}
+
+.workOverview-ItemCard h2 {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.workOverview-Table {
+    margin: 10px;
+    border-collapse: collapse;
+}
+
+.workOverview-Table th {
+    width: 180px;
+    padding: 5px;
+    border: 1px solid #000000;
+    background-color: $themeColorLight;
+}
+
+.workOverview-Table td {
+    padding: 5px;
+    border: 1px solid #000000;
+}
+
+.workOverview-Table a {
+    color: #000000;
+}
+
+.workOverview-Table a:hover {
+    color: $themeColor;
+}
+
+.workOverview-Table img {
+    margin-right: 5px;
+    max-width: 200px;
+    max-height: 100px;
+}

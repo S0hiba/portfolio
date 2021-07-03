@@ -1,0 +1,114 @@
+.blogList {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blogList a {
+    color: #000000;
+}
+
+.blogList a:hover {
+    color: $themeColor;
+}
+
+.blogList-NavArea {
+    width: 240px;
+    padding: 10px;
+}
+
+.blogList-NavArea nav {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #E8E8E8;
+}
+
+.blogList-NavArea h1 {
+    margin: 5px 0;
+}
+
+.blogList-NavArea h2 {
+    margin: 10px 0;
+    margin-left: 15px;
+}
+
+.blogList-NavArea ul {
+    margin: 0;
+}
+
+.blogList-ArticleArea {
+    width: 700px;
+    padding: 10px;
+}
+
+.blogList-Article {
+    margin-bottom: 40px;
+}
+
+.blogList-Article_Header {
+    border-bottom: 3px solid $themeColor;
+}
+
+.blogList-Article_Header h1 {
+    margin: 0;
+}
+
+.blogList-Article_Header p {
+    display: inline-block;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.blogList-Article_ReadLinkArea {
+    text-align: right;
+}
+
+.blogList-Pager {
+    display: flex;
+    justify-content: center;
+}
+
+.blogList-Pager ol {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.blogList-Pager_Link-prev,
+.blogList-Pager_Link-next,
+.blogList-Pager_Link-number {
+    margin: 0 5px;
+    border: 2px solid $themeColor;
+}
+
+.blogList-Pager_Link-prev:hover,
+.blogList-Pager_Link-next:hover,
+.blogList-Pager_Link-number:hover {
+    background-color: $themeColorLight;
+}
+
+.blogList-Pager_Link-prev a,
+.blogList-Pager_Link-next a {
+    display: block;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+}
+
+.blogList-Pager_Link-prev i,
+.blogList-Pager_Link-next i {
+    margin: 0 5px;
+}
+
+.blogList-Pager_Link-number a {
+    display: block;
+    width: 35px;
+    height: 25px;
+    text-align: center;
+}
+
+.blogList-Pager_Link-current {
+    background-color: $themeColorLight;
+    color: $themeColor;
+}

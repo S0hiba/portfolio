@@ -1,0 +1,31 @@
+.workList {
+    display: block;
+    margin: 0;
+    padding: 0 30px;
+    padding-bottom: 15px;
+    list-style-type: none;
+}
+
+.workList li {
+    border: 1px solid $themeColor;
+    background-color: $themeColorLight;
+    margin: 10px 0;
+}
+
+.workList li:hover {
+    background-color: $themeColor;
+}
+
+.workList a {
+    color: #000000;
+}
+
+.workList h2 {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.workList img {
+    width: 100%;
+}

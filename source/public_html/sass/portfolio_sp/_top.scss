@@ -1,0 +1,35 @@
+.top-NewsArea {
+    padding: 10px;
+}
+
+.top-NewsArea h1 {
+    margin: 5px 0;
+}
+
+.top-NewsArea ul {
+    margin: 0;
+}
+
+.top-NewsArea li {
+    margin: 3px 0;
+}
+
+.top-NewsArea_NewsInfo,
+.top-NewsArea_NewsText {
+    display: block;
+}
+
+.top-NewsArea_NewsTag {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    background-color: $themeColor;
+}
+
+.top-NewsArea a {
+    color: #000000;
+}
+
+.top-NewsArea a:hover {
+    color: $themeColor;
+}

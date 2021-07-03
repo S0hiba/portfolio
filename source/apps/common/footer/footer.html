@@ -1,0 +1,78 @@
+{strip}
+<footer class="footer">
+    <div class="footer-PageUpLinkArea">
+        <a href="#"><i class="fas fa-arrow-alt-circle-up"></i>ページ最上部へ</a>
+    </div>
+    <div class="footer-ContentsLinkArea">
+        <div class="footer-ContentsLinkArea_TitleArea">
+            <h2>S_hiba's Portfolio Website</h2>
+            <p>「デキる」WEBエンジニアを目指して。</p>
+        </div>
+        <section class="footer-ContentsLinkArea_WorkLinkArea">
+            <h2><i class="fas fa-laptop-code"></i>イチオシ作品</h2>
+            <ul>
+                {foreach from=$workListFooter item=workRowFooter}
+                    <li>
+                        <a href="/work/overview/{$workRowFooter.work_id}/">
+                            {$workRowFooter.work_name}
+                        </a>
+                    </li>
+                {/foreach}
+            </ul>
+        </section>
+        <section class="footer-ContentsLinkArea_BlogLinkArea">
+            <h2><i class="fas fa-book"></i>ブログ新着記事</h2>
+            <ul>
+                {foreach from=$articleListFooter item=articleRowFooter}
+                    <li>
+                        <a href="/blog/article/{$articleRowFooter.article_id}/">
+                            {$articleRowFooter.article_title}
+                        </a>
+                    </li>
+                {/foreach}
+            </ul>
+        </section>
+    </div>
+    <div class="footer-NavArea">
+        <nav class="footer-NavArea_Nav">
+            <ul>
+                <li>
+                    <a href="/top/">
+                        <i class="fas fa-home"></i>ホーム
+                    </a>
+                </li>
+                <li>
+                    <a href="/profile/">
+                        <i class="fas fa-user"></i>自己紹介
+                    </a>
+                </li>
+                <li>
+                    <a href="/work/list/">
+                        <i class="fas fa-laptop-code"></i>作品
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog/list/">
+                        <i class="fas fa-book"></i>ブログ
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/S0hiba?lang=ja" target="_blank">
+                        <i class="fab fa-twitter"></i>Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/S0hiba" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <p>
+            <small>
+                &copy; <time datetime="2016">2016</time>-<time datetime="{$nowYear}">{$nowYear}</time> S_hiba
+            </small>
+        </p>
+    </div>
+</footer>
+{/strip}

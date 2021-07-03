@@ -1,0 +1,38 @@
+.header {
+    background-color: $themeColor;
+}
+
+.header-TitleArea {
+    padding: 10px;
+}
+
+.header-TitleArea h1,
+.header-TitleArea p {
+    display: inline-block;
+    margin: 0;
+}
+
+.header-KeyVisual {
+    vertical-align: bottom;
+}
+
+.header-Nav ul {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 10px;
+    list-style-type: none;
+}
+
+.header-Nav li {
+    margin-right: 40px;
+    font-size: 25px;
+}
+
+.header-Nav a {
+    color: #000000;
+}
+
+.header-Nav a:hover {
+    color: #FFFFFF;
+}
