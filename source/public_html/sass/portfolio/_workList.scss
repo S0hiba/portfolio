@@ -1,5 +1,6 @@
 .workList {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin: 0;
     padding: 0 30px;
@@ -8,6 +9,7 @@
 }
 
 .workList li {
+    margin: 10px 0;
     border: 1px solid $themeColor;
     background-color: $themeColorLight;
 }

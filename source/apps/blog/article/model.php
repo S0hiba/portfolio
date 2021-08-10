@@ -161,4 +161,47 @@ class BlogArticleModel extends ModelCore
         //正しい形式でない場合はfalseを返す
         return false;
     }
+
+    public function replaceCodeTag($articleData)
+    {
+        //開始タグを置換
+        $resultText = preg_replace('/\#\#code start (.*)\#\#/u', '<code class="prettyprint linenums lang-${1}">', $articleData['article_text']);
+
+        //終了タグを置換
+        $resultText = str_replace('##code end##', '</code>', $resultText);
+
+        //記事本文を置換後の文字列に置き換え、記事データを返す
+        $articleData['article_text'] = $resultText;
+        return $articleData;
+    }
+
+    /**
+     * URLのaタグ変換
+     * preg_replaceだと改行コードの処理が難しい為、preg_match_allを使用し手動でリプレイスしている
+     * @param array $articleData
+     * @return array
+     */
+    public function replaceUrl($articleData)
+    {
+        //文中からURLを検出
+        preg_match_all("/^https?:.*$/um", $articleData['article_text'], $matchList);
+
+        //URLが存在しなかった場合、そのままの記事データを返す
+        if (!isset($matchList[0]) || !is_array($matchList[0]) || count($matchList[0]) === 0) {
+            return $articleData;
+        }
+
+        //検出したURL配列から、重複を除去
+        $matchListUnique = array_unique($matchList[0]);
+
+        //全てのURLをaタグへ変換
+        foreach ($matchListUnique as $matchStr) {
+            $matchStrNoNl = str_replace(array("\n", "\r"), '', $matchStr);
+            $replaceTag = '<a href="' . $matchStrNoNl . '" target="_blank">' . "{$matchStrNoNl}</a>";
+            $articleData['article_text'] = str_replace($matchStrNoNl, $replaceTag, $articleData['article_text']);
+        }
+
+        //本文のURLをaタグへ置換した記事データを返す
+        return $articleData;
+    }
 }

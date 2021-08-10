@@ -44,6 +44,11 @@ class BlogArticleController extends ControllerCore
         $this->model = new BlogArticleModel($this->dataStore);
         $this->model->setArticleId($this->pathQuery[2]);
 
+        //記事を取得し、記事本文のHTMLタグ変換を実行
+        $article = $this->model->getArticle();
+        $article = $this->model->replaceCodeTag($article);
+        $article = $this->model->replaceUrl($article);
+
         //POSTパラメータにコメントデータが正しく指定されていた場合、コメントを書き込む
         if ($this->isCorrectPostParam($this->postParam) && $this->model->isCorrectCommentParam($this->postParam)) {
             // POST処理を実行
@@ -53,7 +58,7 @@ class BlogArticleController extends ControllerCore
 
         //smartyに変数をアサイン
         $this->viewSmarty->assign(array(
-            'article'               => $this->model->getArticle(),
+            'article'               => $article,
             'commentList'           => $this->model->getCommentList(),
             'footerHtml'            => $commonFooterHtml,
             'headerHtml'            => $commonHeaderHtml,
