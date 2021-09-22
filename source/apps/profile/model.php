@@ -58,7 +58,7 @@ class ProfileModel extends ModelCore
             'portfolio.technology_tag_master'   => 'technology_tag_id',
         ));
         $queryObj->setOrder(array(
-            'technology_tag_sort_no',
+            'technology_tag_sort_no ASC',
             'skill_sort_no ASC'
         ));
 
@@ -83,5 +83,40 @@ class ProfileModel extends ModelCore
 
         //作成した配列を返す
         return $skillList;
+    }
+
+    public function getLicenseList()
+    {
+        //データ取得対象のキャッシュのキー名を指定
+        $cacheKey = 'portfolio_license_list';
+
+        //データ取得用のSQLクエリオブジェクトを用意
+        $queryObj = $this->dataStore->createPlaneSqlQueryObj();
+        $queryObj->setSelect('portfolio.license_master');
+        $queryObj->setOrder(array('license_sort_no ASC'));
+
+        //データを取得
+        $licenseArray = $this->dataStore->getData($cacheKey, $queryObj);
+
+        //取得したデータが正しい配列形式ではない場合、空の配列を返す
+        if (!isset($licenseArray) || !is_array($licenseArray) || count($licenseArray) <= 0) {
+            return array();
+        }
+
+        //資格マスタの資格取得日(TIMESTAMP型)から時間部分を削除して整形
+        foreach($licenseArray as $licenseData) {
+            $licenseStampObj = new DateTime($licenseData['license_stamp']);
+            $licenseGetDate = $licenseStampObj->format('Y年m月d日');
+
+            $licenseList[] = array(
+                'license_name'          => $licenseData['license_name'],
+                'license_host'          => $licenseData['license_host'],
+                'license_homepage_url'  => $licenseData['license_homepage_url'],
+                'license_get_date'      => $licenseGetDate,
+            );
+        }
+
+        //取得したデータを返す
+        return $licenseList;
     }
 }

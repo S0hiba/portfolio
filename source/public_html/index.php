@@ -62,27 +62,32 @@ $dataStore = new QueryBuilderWithPhpRedisDataStore($redis, $queryRunner);
 //現在の年を取得
 $nowYear = $execDateTime->format('Y');
 
-//パスに応じて処理を切り分ける
-switch ($pathQuery[0]) {
-    case 'blog':
-    case 'work':
-        include_once("{$projectDirPath}/apps/{$pathQuery[0]}/controller.php");
+//ルーティング設定ファイルをインクルードし、ルーティング定義配列を取得
+include_once("{$projectDirPath}/apps/core/route.php");
+if (!isset($routeArray) || !is_array($routeArray) || count($routeArray) === 0) {
+    //ルーティング定義配列が正しい配列形式でなかった場合、404エラーを出力し処理を終了
+    header('HTTP/1.0 404 Not Found');
+    exit;
+}
+
+//パスに応じたコントローラをルーティング定義配列から取得
+foreach($routeArray as $routePath => $routeController) {
+    if (strpos($pathString, $routePath) === 0) {
+        $controller = $routeController;
         break;
-    case 'profile':
-        include_once("{$projectDirPath}/apps/{$pathQuery[0]}/controller.php");
-        $controller = new ProfileController($dataStore, $smarty, $execDateTime, $pathQuery, $_POST);
-        break;
-    case 'top':
-        include_once("{$projectDirPath}/apps/{$pathQuery[0]}/controller.php");
-        $controller = new TopController($dataStore, $smarty, $execDateTime, $pathQuery, $_POST);
-        break;
-    case 'counter':
-        include_once("{$projectDirPath}/apps/{$pathQuery[0]}/controller.php");
-        $controller = new CounterController($dataStore, $smarty, $execDateTime, $pathQuery, $_POST);
-        break;
-    default:
-        include_once("{$projectDirPath}/apps/top/controller.php");
-        $controller = new TopController($dataStore, $smarty, $execDateTime, $pathQuery, $_POST);
+    }
+}
+
+//ルーティング定義配列からコントローラが取得できなかった場合の処理
+if (empty($controller)) {
+    if (!empty($routeArray['top'])) {
+        //パス「top」にコントローラが指定されている場合、それを取得
+        $controller = $routeArray['top'];
+    } else {
+        //そうでない場合、404エラーを出力し処理を終了
+        header('HTTP/1.0 404 Not Found');
+        exit;
+    }
 }
 
 //コントローラアクションを実行し、実行結果のHTMLを出力

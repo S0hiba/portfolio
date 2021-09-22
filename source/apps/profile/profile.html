@@ -38,8 +38,9 @@
                         <img src="https://cdn.s0hiba.site/img/logo.png" alt="ロゴ">
                         <p>
                             はじめまして、S_hibaです。{$age}歳の静岡県在住Webエンジニアです。<br>
-                            業務では、2018年4月～2019年10月はバックエンド開発を担当、以降はインフラ担当をしています。<br>
-                            さらに、フロントエンド開発にも興味があり、プライベート開発を通して勉強中です。<br>
+                            業務では、2018年4月～2019年10月はバックエンド開発を担当。<br>
+                            以降はインフラやネイティブアプリ開発も担当し、幅広い業務に対応しています。<br>
+                            さらに、フロントエンド開発にも興味があり、プライベートでの開発を通して勉強中です。<br>
                             Web開発の全体を俯瞰したうえで最適な開発が出来る、そんなエンジニアを目指しています。<br>
                         </p>
                     </div>
@@ -79,6 +80,34 @@
                             </table>
                         </section>
                     {/foreach}
+                </section>
+                <section class="profile-License">
+                    <h2>取得資格</h2>
+                    <table class="profile-LicenseTable">
+                        <thead>
+                            <tr>
+                                <th class="profile-LicenseTable_NameColumn">資格名</th>
+                                <th class="profile-LicenseTable_GetDateColumn">取得日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach from=$licenseList item=licenseRow}
+                                <tr>
+                                    <td class="profile-LicenseTable_NameColumn">
+                                        {if $licenseRow.license_homepage_url !== ''}
+                                            <a href="{$licenseRow.license_homepage_url}" target="_blank">
+                                        {/if}
+                                            {$licenseRow.license_host} 主催<br>
+                                            {$licenseRow.license_name}
+                                        {if $licenseRow.license_homepage_url !== ''}
+                                            </a>
+                                        {/if}
+                                    </td>
+                                    <td class="profile-LicenseTable_GetDateColumn">{$licenseRow.license_get_date}</td>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
                 </section>
                 <section class="profile-Hobby">
                     <h2><i class="fas fa-baseball-ball"></i>趣味</h2>

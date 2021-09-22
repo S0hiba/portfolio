@@ -21,6 +21,15 @@ class TopController extends ControllerCore
 {
     private $model;
 
+    public function __construct(
+        QueryBuilderWithPhpRedisDataStore $dataStore, Smarty $viewSmarty, DateTime $execDateTime, array $pathQuery, array $postParam)
+    {
+        //pathQuery[0]をtopで固定
+        //トップページは意図せぬパスからも表示される為、決め打ちで指定する
+        $pathQuery = array('top');
+        parent::__construct($dataStore, $viewSmarty, $execDateTime, $pathQuery, $postParam);
+    }
+
     public function action()
     {
         //共通フッターHTMLを生成

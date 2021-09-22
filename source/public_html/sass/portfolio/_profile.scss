@@ -3,6 +3,14 @@
     padding: 10px;
 }
 
+.profile a {
+    color: #000000;
+}
+
+.profile a:hover {
+    color: $themeColor;
+}
+
 .profile-SelfIntroduction h2 {
     margin: 0;
 }
@@ -26,13 +34,16 @@
     margin: 0;
 }
 
-.profile-SkillSetTable {
+.profile-SkillSetTable,
+.profile-LicenseTable {
     width: 100%;
     border-collapse: collapse;
 }
 
 .profile-SkillSetTable th,
-.profile-SkillSetTable td {
+.profile-SkillSetTable td,
+.profile-LicenseTable th,
+.profile-LicenseTable td {
     padding: 10px;
     border: 1px solid #000000;
     text-align: center;

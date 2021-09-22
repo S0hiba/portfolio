@@ -41,6 +41,7 @@ class ProfileController extends ControllerCore
             'age'               => $this->model->getAge($this->execDateTime),
             'tagList'           => $this->model->getTagList(),
             'skillList'         => $this->model->getSkillList(),
+            'licenseList'       => $this->model->getLicenseList(),
             'headerHtml'        => $commonHeaderHtml,
             'footerHtml'        => $commonFooterHtml,
         ));

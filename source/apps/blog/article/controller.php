@@ -54,6 +54,7 @@ class BlogArticleController extends ControllerCore
             // POST処理を実行
             $insertedComment = $this->model->writeComment($this->postParam, $this->execDateTime);
             $this->model->writeDbActionLog($insertedComment, $this->execDateTime);
+            $this->model->postCommentToSlack($article, $insertedComment);
         }
 
         //smartyに変数をアサイン

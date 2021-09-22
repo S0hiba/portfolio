@@ -220,3 +220,22 @@ COMMENT ON COLUMN portfolio.technology_skill.technology_id IS '技術ID(technolo
 COMMENT ON COLUMN portfolio.technology_skill.skill_experience IS '技術スキル経験年数';
 COMMENT ON COLUMN portfolio.technology_skill.skill_evaluation IS '技術スキル自己評価';
 COMMENT ON COLUMN portfolio.technology_skill.skill_sort_no IS '技術スキル表示順';
+
+/* 取得資格マスタテーブル作成 */
+CREATE TABLE portfolio.license_master(
+    license_id SERIAL PRIMARY KEY,
+    license_name TEXT NOT NULL,
+    license_host TEXT NOT NULL,
+    license_stamp TIMESTAMP NOT NULL,
+    license_sort_no INTEGER NOT NULL DEFAULT 999,
+    license_homepage_url TEXT
+);
+
+/* 取得資格マスタテーブル コメント記述 */
+COMMENT ON TABLE portfolio.license_master IS '取得資格マスタテーブル';
+COMMENT ON COLUMN portfolio.license_master.license_id IS '取得資格ID';
+COMMENT ON COLUMN portfolio.license_master.license_name IS '取得資格名';
+COMMENT ON COLUMN portfolio.license_master.license_host IS '主催団体名';
+COMMENT ON COLUMN portfolio.license_master.license_stamp IS '資格取得日';
+COMMENT ON COLUMN portfolio.license_master.license_sort_no IS '資格表示順';
+COMMENT ON COLUMN portfolio.license_master.license_homepage_url IS '資格ホームページのURL';

@@ -204,4 +204,26 @@ class BlogArticleModel extends ModelCore
         //本文のURLをaタグへ置換した記事データを返す
         return $articleData;
     }
+
+    public function postCommentToSlack($commentedArticle, $insertComment)
+    {
+        //slack通知用のcurl設定
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, 'https://hooks.slack.com/services/XXXXXXXX/XXXXXXXX/xxxxxxxx');
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+
+        //Slackにコメントを通知
+        $slackPostParam = array(
+            'payload' => json_encode(array(
+                'channel'   => '#portfolio_comment',
+                'text'      => "「{$commentedArticle['article_title']}」へのコメント\n\n{$insertComment['comment_text']}",
+            ))
+        );
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($slackPostParam));
+        $slackPostResult = curl_exec($curl);
+
+        //コメント通知リクエストの結果を返す
+        return $slackPostResult;
+    }
 }
